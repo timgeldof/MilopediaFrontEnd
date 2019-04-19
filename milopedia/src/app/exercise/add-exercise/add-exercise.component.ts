@@ -1,5 +1,6 @@
 import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import { Exercise } from '../../exercise.model';
+import {Muscle} from '../../muscle.model';
 @Component({
   selector: 'app-add-exercise',
   templateUrl: './add-exercise.component.html',
@@ -17,7 +18,7 @@ export class AddExerciseComponent implements OnInit {
     description:HTMLInputElement, 
     difficulty: HTMLInputElement, 
     youtubeURL:HTMLInputElement): boolean{
-    const exercise = new Exercise(exercisename.value, +difficulty.value, youtubeURL.value, description.value);
+    const exercise = new Exercise(0, exercisename.value, +difficulty.value, youtubeURL.value, description.value, new Array<Muscle>());
                                                       // plus in front of string converts it to a number
     this.newExercise.emit(exercise);
     return false;

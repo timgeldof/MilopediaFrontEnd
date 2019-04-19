@@ -15,13 +15,15 @@ import { AppComponent } from './app.component';
 import { ExerciseComponent } from './exercise/exercise.component';
 import { YoutubePipe } from './pipes/youtube.pipe';
 import { AddExerciseComponent } from './exercise/add-exercise/add-exercise.component';
-
+import { ExerciseFilterPipe } from './pipes/exercise-filter.pipe';
+import {HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
     ExerciseComponent,
     YoutubePipe,
-    AddExerciseComponent
+    AddExerciseComponent,
+    ExerciseFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import { AddExerciseComponent } from './exercise/add-exercise/add-exercise.compo
     MatFormFieldModule,
     MatInputModule,
     FlexLayoutModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

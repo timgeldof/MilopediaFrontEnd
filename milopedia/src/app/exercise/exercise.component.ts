@@ -1,21 +1,39 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Exercise } from '../exercise.model';
-import {EXERCISES} from '../mock-exercises';
+import { ExerciseDataService } from '../exercise-data.service';
+import { Subject, Observable } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
+
 @Component({
   selector: 'app-exercise',
   templateUrl: './exercise.component.html',
   styleUrls: ['./exercise.component.css']
 })
 export class ExerciseComponent implements OnInit {
-  @Input() public exercise : Exercise;
-  exercises = EXERCISES;
 
-  constructor() { }
+  private title: string = "Exercises";
+  private _fetchExercises$: Observable<Exercise[]> = this._exerciseDataService.exercises$;
+
+  public filterExerciseName: string;
+  public filterExercise$ = new Subject<string>();
+
+  constructor(private _exerciseDataService: ExerciseDataService) {
+    //this.filterExercise$.pipe(debounceTime(400)).subscribe(val => this.filterExerciseName = val);
+  }
 
   ngOnInit() {
   }
-  addNewExercise(exercise: Exercise){
-    this.exercises.push(exercise);
+
+  get exercises(): Observable<Exercise[]> {
+    return this._fetchExercises$;
+  }
+
+  addNewExercise(exercise: Exercise) {
+    this._exerciseDataService.addNewExercise(exercise);
+  }
+
+  applyFilter(filter: string) {
+    this.filterExerciseName = filter;
   }
 
 }
