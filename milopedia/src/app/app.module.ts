@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule} from '@angular/forms'
 import {
   MatButtonModule,
   MatListModule,
@@ -36,7 +37,8 @@ import {HttpClientModule} from '@angular/common/http';
     MatInputModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

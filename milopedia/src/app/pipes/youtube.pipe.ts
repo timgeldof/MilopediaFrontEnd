@@ -12,11 +12,13 @@ export class YoutubePipe implements PipeTransform {
       let match = value.match(regExp); 
       if (match && match[2].length == 11) {
           let separatedID = match[2];
+          // haalt id uit derde element van regexp match array
           let embedUrl = '//www.youtube.com/embed/' + separatedID; //zet youtube link om naar embedded youtube link
           return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl); 
           // voeg youtube link toe aan veilige links, zal enkel werken bij youtube URLs, dus XSS is niet mogelijk
+      } else {
+        return this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/L1tx-wAI6Nw");
       }
-
   }
 
 }

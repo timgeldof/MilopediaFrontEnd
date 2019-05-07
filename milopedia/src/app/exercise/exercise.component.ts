@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Exercise } from '../exercise.model';
 import { ExerciseDataService } from '../exercise-data.service';
 import { Subject, Observable } from 'rxjs';
+import {Muscle} from '../muscle.model';
 import { debounceTime } from 'rxjs/operators';
 
 @Component({
@@ -29,7 +30,7 @@ export class ExerciseComponent implements OnInit {
   }
 
   addNewExercise(exercise: Exercise) {
-    this._exerciseDataService.addNewExercise(exercise);
+    this._exerciseDataService.addNewExercise(exercise).subscribe();
   }
 
   applyFilter(filter: string) {

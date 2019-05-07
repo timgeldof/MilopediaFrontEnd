@@ -6,14 +6,14 @@ export class Exercise {
         private _difficulty: number,
         private _youtubeURL: string,
         private _description: string,
-        private _musclesUsed: Muscle[]
+        private _exerciseMuscles: Muscle[]
     ) { }
     get id(): number { return this._id };
     get name(): string { return this._name; }
     get difficulty(): number { return this._difficulty; }
     get youtubeURL(): string { return this._youtubeURL; }
     get description(): string { return this._description; }
-    get musclesUsed(): Muscle[] { return this._musclesUsed }
+    get exerciseMuscles(): Muscle[] { return this._exerciseMuscles }
 
     static fromJSON(json: any): Exercise {
         let musclesFromJson = new Array<Muscle>();
@@ -22,6 +22,9 @@ export class Exercise {
         }        
         const rec = new Exercise(json.id, json.name, json.difficulty, json.youtubeURL, json.description || "No description", musclesFromJson);
         return rec;
+    }
+    public toJSON(){
+      return JSON.stringify(this);
     }
 }
 /*

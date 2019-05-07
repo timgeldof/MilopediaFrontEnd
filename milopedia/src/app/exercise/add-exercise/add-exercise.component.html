@@ -1,17 +1,21 @@
-<mat-card class="exerciseform">
-  <mat-form-field>
-    <input matInput placeholder="name" type="text" #exercisename />
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="description" type="text" #description />
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="difficulty" type="text" #difficulty />
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="youtube url" type="text" #youtubeURL/>
-  </mat-form-field>
-  <button (click)="addExercise(exercisename,description, difficulty, youtubeURL )" mat-raised-button>
-    add exercise
-  </button>
+<mat-card>
+<mat-card-title>Add exercise</mat-card-title>
+<mat-card-content>
+  <form [formGroup]="exercise">
+    <mat-form-field>
+
+      <input
+        matInput
+        aria-label="name"
+        placeholder="name"
+        type="text"
+        formControlName="name"
+        />
+
+    </mat-form-field>
+    <button mat-raised-button>
+      Add
+    </button>
+  </form>
+</mat-card-content>
 </mat-card>
