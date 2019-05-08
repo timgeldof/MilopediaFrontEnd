@@ -8,7 +8,8 @@ import {
   MatCardModule,
   MatIconModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatSelectModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -18,13 +19,15 @@ import { YoutubePipe } from './pipes/youtube.pipe';
 import { AddExerciseComponent } from './exercise/add-exercise/add-exercise.component';
 import { ExerciseFilterPipe } from './pipes/exercise-filter.pipe';
 import {HttpClientModule} from '@angular/common/http';
+import { MuscleComponent } from './muscle/muscle.component';
 @NgModule({
   declarations: [
     AppComponent,
     ExerciseComponent,
     YoutubePipe,
     AddExerciseComponent,
-    ExerciseFilterPipe
+    ExerciseFilterPipe,
+    MuscleComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import {HttpClientModule} from '@angular/common/http';
     FlexLayoutModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

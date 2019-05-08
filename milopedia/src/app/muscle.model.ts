@@ -1,3 +1,18 @@
+import { Exercise } from './exercise.model';
+
 export class Muscle{
-    constructor(id: number, name: string, muscleType: number, ){}
+    constructor(
+        public id: number, 
+        public name: string, 
+        public muscleType: number){
+    }
+    static fromJSON(json: any): Muscle {
+        return new Muscle(json.id, json.name, json.muscleType);
+    }
+    toJSON(){
+        return { 
+            exerciseId: 0,
+            muscleId: this.id
+        }
+    }
 }

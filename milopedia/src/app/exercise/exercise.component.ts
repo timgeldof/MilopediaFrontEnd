@@ -19,7 +19,7 @@ export class ExerciseComponent implements OnInit {
   public filterExercise$ = new Subject<string>();
 
   constructor(private _exerciseDataService: ExerciseDataService) {
-    //this.filterExercise$.pipe(debounceTime(400)).subscribe(val => this.filterExerciseName = val);
+
   }
 
   ngOnInit() {

@@ -23,8 +23,15 @@ export class Exercise {
         const rec = new Exercise(json.id, json.name, json.difficulty, json.youtubeURL, json.description || "No description", musclesFromJson);
         return rec;
     }
-    public toJSON(){
-      return JSON.stringify(this);
+    public toJSON(): any{
+      return {
+        id: this.id,
+        name: this.name,
+        difficulty: this.difficulty,
+        youtubeURL: this.youtubeURL,
+        description: this.description,
+        exerciseMuscles: this.exerciseMuscles.map(em => em.toJSON)
+      }
     }
 }
 /*
