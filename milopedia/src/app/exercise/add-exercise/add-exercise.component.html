@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-title>Add exercise</mat-card-title>
   <mat-card-content>
-    <form [formGroup]="exercise">
+    <form [formGroup]="exercise" (ngSubmit)="onSubmit()">
       <mat-form-field>
         <!--aria label is gwn voor screen reader gebruikers -->
         <input matInput aria-label="name input" placeholder="name" type="text" formControlName="name" required />
@@ -27,19 +27,18 @@
           <mat-form-field>
             <mat-label>Muscle</mat-label>
             <mat-select formControlName="muscleId">
-              <mat-option *ngFor="let muscle of muscles$ | async" [value]="muscle">
+              <mat-option *ngFor="let muscle of muscles$ | async" [value]="muscle.id">
                 {{muscle.name}}
               </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
       </div>
-      <button mat-raised-button color="primary" [disabled]="exercise.get('exerciseMuscles')['controls'].length>4" (click)="addMuscleToFormArray()">Add Muscle</button>
-      <button type="submit" mat-raised-button [disabled]="!exercise.valid">
-        Add Exercise
-      </button>
+      <button type="button" mat-raised-button color="primary" [disabled]="exercise.get('exerciseMuscles')['controls'].length>4" (click)="addMuscle()">Add Muscle</button>
+      <button type="submit" mat-raised-button [disabled]="!exercise.valid">Add</button>
     </form>
   </mat-card-content>
 </mat-card>
 
 {{exercise.value | json}}
+<hr>

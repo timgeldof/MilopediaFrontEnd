@@ -29,10 +29,6 @@ export class ExerciseComponent implements OnInit {
     return this._fetchExercises$;
   }
 
-  addNewExercise(exercise: Exercise) {
-    this._exerciseDataService.addNewExercise(exercise).subscribe();
-  }
-
   applyFilter(filter: string) {
     this.filterExerciseName = filter;
   }

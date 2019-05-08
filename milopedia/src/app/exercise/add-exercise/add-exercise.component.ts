@@ -24,7 +24,7 @@ export class AddExerciseComponent implements OnInit {
       difficulty: [1],
       youtubeURL: ["https://www.youtube.com/watch?v=xLK7qu8Fdg4"],
       description: ["Here comes the description, keep it short and let the video explain the rest"],
-      exerciseMuscles: this.formBuilder.array([this.addMuscle()])
+      exerciseMuscles: this.formBuilder.array([])
     });
     this.addMuscle();
   }
@@ -39,18 +39,15 @@ export class AddExerciseComponent implements OnInit {
     }
     return difficulties;
   }
-
-  get muscleForms() {
-    return this.exercise.get('exerciseMuscles') as FormArray
-  }
-  addMuscleToFormArray(){
-    this.muscleForms.push(this.addMuscle());
+  get muscles(): FormArray{
+    return this.exercise.get("exerciseMuscles") as FormArray
   }
   addMuscle() {
-    return this.formBuilder.group({
-      exerciseId:[0],
-      muscleId:[1]
-    })
+    this.muscles.push(
+      this.formBuilder.group({
+        exerciseId:[0],
+        muscleId:[1]
+    }));
   }
 
   getErrorMessage(errors: any) {
@@ -64,7 +61,8 @@ export class AddExerciseComponent implements OnInit {
     }
   }
   onSubmit() {
-    this.newExercise.emit(this.exercise.value);
+    console.log(this.exercise.value);
+    this._exerciseDataService.addNewJsonExercise(this.exercise.value);
   }
   
   get muscles$(): Observable<Muscle[]> {

@@ -30,4 +30,8 @@ export class ExerciseDataService {
     return this.http.post(`${environment.apiURL}/exercise/`, exercise.toJSON());
     //returns response body == observable --> needs to be subscribed to
   }
+  addNewJsonExercise(json: any){
+    console.log(json);
+    return this.http.post(`${environment.apiURL}/exercise/`, json).subscribe();
+  }
 }
