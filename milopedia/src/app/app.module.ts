@@ -9,7 +9,7 @@ import {
   MatIconModule,
   MatFormFieldModule,
   MatInputModule,
-  MatSelectModule
+  MatSelectModule, MatToolbarModule, MatSidenavModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -21,6 +21,17 @@ import { ExerciseFilterPipe } from './pipes/exercise-filter.pipe';
 import {HttpClientModule} from '@angular/common/http';
 import { MuscleComponent } from './muscle/muscle.component';
 import {RouterModule, Routes} from '@angular/router';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { AppRoutingModule } from './app-routing.module';
+
+const appRoutes : Routes = [
+  { path: 'exercise-list', component: ExerciseListComponent},
+  { path: 'add-exercise', component: AddExerciseComponent},
+  { path: '', redirectTo:'exercise-list', pathMatch:'full'},
+  { path: '**', component: PageNotFoundComponent}
+]
 
 @NgModule({
   declarations: [
@@ -29,11 +40,12 @@ import {RouterModule, Routes} from '@angular/router';
     YoutubePipe,
     AddExerciseComponent,
     ExerciseFilterPipe,
-    MuscleComponent
+    MuscleComponent, 
+    PageNotFoundComponent, MainNavComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule,
+    RouterModule.forRoot(appRoutes),
     MatButtonModule,
     MatListModule,
     MatGridListModule,
@@ -45,7 +57,11 @@ import {RouterModule, Routes} from '@angular/router';
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
