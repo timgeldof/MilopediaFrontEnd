@@ -1,4 +1,5 @@
-import { Muscle } from './muscle.model'
+import { Muscle } from '../muscle.model'
+
 export class Exercise {
     constructor(
         private _id: number,

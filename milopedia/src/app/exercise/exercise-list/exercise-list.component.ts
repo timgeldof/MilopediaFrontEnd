@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Exercise } from '../exercise.model';
 import { ExerciseDataService } from '../exercise-data.service';
 import { Subject, Observable } from 'rxjs';
-import { Muscle } from '../muscle.model';
+import { Muscle } from '../../muscle.model';
 import { debounceTime } from 'rxjs/operators';
 
 @Component({

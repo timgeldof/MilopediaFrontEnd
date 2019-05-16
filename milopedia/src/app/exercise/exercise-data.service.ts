@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Exercise } from './exercise.model';
+import { Exercise } from 'src/app/exercise/exercise.model';
 import { HttpClient } from '@angular/common/http'
 import { Observable, Subject, of } from 'rxjs';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 import { map, catchError } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })

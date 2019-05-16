@@ -1,10 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Exercise } from '../../exercise.model';
 import { Muscle } from '../../muscle.model';
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray, AbstractControl } from '@angular/forms';
 import { MuscleDataService } from 'src/app/muscle-data.service';
 import { Observable } from 'rxjs';
-import { ExerciseDataService } from 'src/app/exercise-data.service';
+import { ExerciseDataService } from 'src/app/exercise/exercise-data.service';
 @Component({
   selector: 'app-add-exercise',
   templateUrl: './add-exercise.component.html',

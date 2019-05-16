@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Exercise} from '../exercise.model';
+import {Exercise} from '../exercise/exercise.model';
 
 @Pipe({
   name: 'exerciseFilter'
