@@ -12,7 +12,6 @@ import { ExerciseDataService } from 'src/app/exercise-data.service';
 })
 export class AddExerciseComponent implements OnInit {
   public exercise: FormGroup;
-  @Output() public newExercise = new EventEmitter<Exercise>();
   private _fetchMuscles$: Observable<Muscle[]> = this._muscleDataService.muscles$;
 
   constructor(private _muscleDataService: MuscleDataService, private _exerciseDataService: ExerciseDataService, private formBuilder: FormBuilder) { }
