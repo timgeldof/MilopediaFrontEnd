@@ -8,6 +8,8 @@
       <a mat-list-item [routerLink]="['exercise/list']" >Exercises</a>
       <a mat-list-item [routerLink]="['exercise/add']" >Add an exercise</a>
       <a mat-list-item [routerLink]="['exercise/1']" >Check an exercise</a>
+      <a mat-list-item [routerLink]="['login']" >Login</a>
+      
 
 -    </mat-nav-list>
   </mat-sidenav>
@@ -22,6 +24,8 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>milopedia</span>
+      <span class="fill-space"></span>
+      <span *ngIf="(loggedInUser$ | async) as user">{{ user }}</span>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>

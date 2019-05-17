@@ -49,13 +49,12 @@ export class AuthenticationService {
   login(email: string, password: string): Observable<boolean> {
     return this.http
       .post(
-      `${environment.apiURL}/account`,
+        `${environment.apiURL}/account`,
         { email, password },
         { responseType: 'text' }
       )
       .pipe(
-        map((res: any) => {
-          const token = res;
+        map((token: any) => {
           if (token) {
             localStorage.setItem(this._tokenKey, token);
             this._user$.next(email);
@@ -70,16 +69,30 @@ export class AuthenticationService {
   logout() {
     if (this.user$.getValue()) {
       localStorage.removeItem(this._tokenKey);
-      setTimeout(() => this._user$.next(null));
+      this._user$.next(null);
     }
   }
 
-  register(email: string, password: string): Observable<boolean> {
+  register(
+    firstname: string,
+    lastname: string,
+    email: string,
+    password: string
+  ): Observable<boolean> {
     return this.http
-      .post(`${environment.apiURL}/account/register`, { email, password })
+      .post(
+        `${environment.apiURL}/account/register`,
+        {
+          firstname,
+          lastname,
+          email,
+          password,
+          passwordConfirmation: password
+        },
+        { responseType: 'text' }
+      )
       .pipe(
-        map((res: any) => {
-          const token = res.token;
+        map((token: any) => {
           if (token) {
             localStorage.setItem(this._tokenKey, token);
             this._user$.next(email);
@@ -90,7 +103,13 @@ export class AuthenticationService {
         })
       );
   }
+
+  checkUserNameAvailability = (email: string): Observable<boolean> => {
+    return this.http.get<boolean>(
+      `${environment.apiURL}/account/checkusername`,
+      {
+        params: { email }
+      }
+    );
+  };
 }
-
-
-

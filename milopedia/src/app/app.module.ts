@@ -23,12 +23,13 @@ import { UserModule } from './user/user.module';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    UserModule,
     //ExerciseModule,
     ReactiveFormsModule,
     LayoutModule,    
     AppRoutingModule,
     MaterialModule,
-    UserModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
