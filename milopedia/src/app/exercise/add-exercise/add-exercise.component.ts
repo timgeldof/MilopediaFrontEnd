@@ -4,6 +4,9 @@ import { FormGroup, FormControl, Validators, FormBuilder, FormArray, AbstractCon
 import { MuscleDataService } from 'src/app/muscle-data.service';
 import { Observable } from 'rxjs';
 import { ExerciseDataService } from 'src/app/exercise/exercise-data.service';
+import { ValidatorFn } from '@angular/forms';
+import { map} from 'rxjs/operators';
+
 @Component({
   selector: 'app-add-exercise',
   templateUrl: './add-exercise.component.html',
@@ -18,7 +21,7 @@ export class AddExerciseComponent implements OnInit {
   ngOnInit() {
     this.exercise = this.formBuilder.group({
       id: [0],
-      name: ["name", [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      name: ["name", [Validators.required, Validators.minLength(5), Validators.maxLength(50)], this.serverSideValidateExerciseName()],
       difficulty: [1],
       youtubeURL: ["https://www.youtube.com/watch?v=xLK7qu8Fdg4"],
       description: ["Here comes the description, keep it short and let the video explain the rest"],
@@ -44,7 +47,7 @@ export class AddExerciseComponent implements OnInit {
     this.muscles.push(
       this.formBuilder.group({
         exerciseId:[0],
-        muscleId:[1]
+        muscleId:[1] 
     }));
   }
 
@@ -56,7 +59,21 @@ export class AddExerciseComponent implements OnInit {
         characters (got ${errors.minlength.actualLength})`;
     } else if (errors.maxlength) {
       return `needs at most 50 ${errors.maxlength.requiredLength} characters but got ${errors.maxlength.actualLength}`
+    } else if (errors.exerciseAlreadyExists) {
+      return `exercise already exists`;
     }
+  }
+  serverSideValidateExerciseName(): ValidatorFn {
+    return (control: AbstractControl): Observable<{ [key: string]: any }> => {
+      return this._exerciseDataService.checkExerciseNameAvailability(control.value).pipe(
+        map(available => {
+          if (available) {
+            return null;
+          }
+          return { exerciseAlreadyExists: true };
+        })
+      );
+    };
   }
   onSubmit() {
     console.log(this.exercise.value);

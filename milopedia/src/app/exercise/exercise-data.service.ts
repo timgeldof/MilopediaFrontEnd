@@ -41,4 +41,12 @@ export class ExerciseDataService {
     console.log(json);
     return this.http.post(`${environment.apiURL}/exercise/`, json).subscribe();
   }
+  checkExerciseNameAvailability = (name: string): Observable<boolean> => {
+    return this.http.get<boolean>(
+      `${environment.apiURL}/exercise/checkexercisename`,
+      {
+        params: { name }
+      }
+    );
+  };
 }

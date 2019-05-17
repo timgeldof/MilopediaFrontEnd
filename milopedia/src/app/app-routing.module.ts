@@ -12,7 +12,7 @@ const appRoutes : Routes = [
     loadChildren:'src/app/exercise/exercise.module#ExerciseModule',
     data: {preload: true }
   },
-  //{ path: '', redirectTo:'exercise/list', pathMatch:'full'},
+  { path: '', redirectTo:'exercise/list', pathMatch:'full'},
   { path: '**', component: PageNotFoundComponent}
 ]
 
