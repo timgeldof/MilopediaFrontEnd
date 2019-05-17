@@ -1,0 +1,26 @@
+<h1>{{title}}</h1>
+<app-add-exercise (newExercise)="addNewExercise($event)"></app-add-exercise>
+
+<mat-card style="margin-top: 15px;">
+  <mat-card-title>Search exercise</mat-card-title>
+  <mat-card-content>
+    <mat-form-field>
+      <input (keyup)='filterExercise$.next($event.target.value)' matInput placeholder="enter search term here" type="text" #filter
+      />
+    </mat-form-field>
+
+  </mat-card-content>
+</mat-card>
+<div *ngFor="let exercise of (exercises | async | exerciseFilter : filterExerciseName)" class="exercise">
+  <mat-card>
+    <mat-card-title> {{exercise.name}} </mat-card-title>
+    <mat-card-subtitle> {{exercise.description}} </mat-card-subtitle>
+    <mat-card-content>
+      <div class="videoWrapper">
+        <iframe width="420" height="315" [src]="exercise.youtubeURL | youtube" allowfullscreen="true">
+          <!--src="{{exercise.youtubeURL | youtube}}" werkt niet, waarom?-->
+        </iframe>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

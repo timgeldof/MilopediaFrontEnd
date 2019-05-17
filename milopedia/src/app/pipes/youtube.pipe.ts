@@ -5,7 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class YoutubePipe implements PipeTransform {
 
-  constructor(private sanitizer : DomSanitizer){} // DomSanitizer == Injectable 
+  constructor(private sanitizer : DomSanitizer){}
 
   transform(value: any, args?: any): any {
       const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;

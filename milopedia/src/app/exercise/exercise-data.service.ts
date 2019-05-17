@@ -26,6 +26,12 @@ export class ExerciseDataService {
         )
       )
   }
+  getExercise$(id): Observable<Exercise>{
+    return this.http.get(`${environment.apiURL}/exercise/${id}`)
+      .pipe(          
+        map((record: any): Exercise => Exercise.fromJSON(record))
+        );
+  }
   addNewExercise(exercise: Exercise) {
     console.log(this);
     return this.http.post(`${environment.apiURL}/exercise/`, exercise.toJSON());

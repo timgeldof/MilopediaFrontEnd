@@ -5,8 +5,10 @@
       [opened]="!(isHandset$ | async)">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item [routerLink]="['exercise-list']" >Exercises</a>
-      <a mat-list-item [routerLink]="['add-exercise']" >Add an exercise</a>
+      <a mat-list-item [routerLink]="['exercise/list']" >Exercises</a>
+      <a mat-list-item [routerLink]="['exercise/add']" >Add an exercise</a>
+      <a mat-list-item [routerLink]="['exercise/1']" >Check an exercise</a>
+
 -    </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

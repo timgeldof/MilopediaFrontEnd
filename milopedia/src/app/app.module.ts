@@ -9,6 +9,8 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { AppRoutingModule } from './app-routing.module';
 import { ExerciseModule } from './exercise/exercise.module';
 import { MaterialModule } from './material/material.module';
+import { HttpClientModule } from '@angular/common/http';
+import { UserModule } from './user/user.module';
 
 
 @NgModule({
@@ -20,11 +22,13 @@ import { MaterialModule } from './material/material.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    //ExerciseModule,
     ReactiveFormsModule,
-    LayoutModule,
+    LayoutModule,    
     AppRoutingModule,
-    ExerciseModule,
     MaterialModule,
+    UserModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
