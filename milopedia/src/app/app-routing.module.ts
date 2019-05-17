@@ -4,9 +4,11 @@ import { RouterModule, Routes, PreloadAllModules} from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ExerciseModule } from 'src/app/exercise/exercise.module';
 import { SelectivePreloadStrategy } from './selective-preload-strategy';
+import { AuthGuard } from 'src/app/user/auth.guard';
 
 const appRoutes : Routes = [
-  { path: 'exercise', 
+  { path: 'exercise',
+    canActivate: [AuthGuard], 
     loadChildren:'src/app/exercise/exercise.module#ExerciseModule',
     data: {preload: true }
   },

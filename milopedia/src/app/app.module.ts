@@ -11,6 +11,7 @@ import { ExerciseModule } from './exercise/exercise.module';
 import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { UserModule } from './user/user.module';
+import { httpInterceptorProviders } from './interceptors/index';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { UserModule } from './user/user.module';
     MaterialModule,
 
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

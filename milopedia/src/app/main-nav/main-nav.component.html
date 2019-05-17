@@ -25,7 +25,12 @@
       </button>
       <span>milopedia</span>
       <span class="fill-space"></span>
-      <span *ngIf="(loggedInUser$ | async) as user">{{ user }}</span>
+      <span *ngIf="(loggedInUser$ | async) as user"
+      >{{ user }}
+      <button (click)="logout()" mat-flat-button>
+        logout
+      </button></span
+    >
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>

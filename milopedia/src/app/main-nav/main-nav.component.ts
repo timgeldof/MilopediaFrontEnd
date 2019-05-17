@@ -16,6 +16,9 @@ export class MainNavComponent {
     .observe(Breakpoints.Handset)
     .pipe(map(result => result.matches));
 
+    logout() {
+      this._authenticationService.logout();
+    }
   constructor(
     private breakpointObserver: BreakpointObserver,
     private _authenticationService: AuthenticationService
