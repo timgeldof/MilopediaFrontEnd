@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
             this.router.navigateByUrl(this.authService.redirectUrl);
             this.authService.redirectUrl = undefined;
           } else {
-            this.router.navigate(['/recipe/list']);
+            this.router.navigate(['/exercise/list']);
           }
         } else {
           this.errorMsg = `Could not login`;
