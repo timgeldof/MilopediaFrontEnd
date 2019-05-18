@@ -75,6 +75,7 @@ export class AddExerciseComponent implements OnInit {
       );
     };
   }
+
   onSubmit() {
     console.log(this.exercise.value);
     this._exerciseDataService.addNewJsonExercise(this.exercise.value);

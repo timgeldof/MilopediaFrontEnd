@@ -1,5 +1,15 @@
-<h1>
-  exercise-detail works!
-</h1>
-{{exercise.name}}
-
+<mat-card>
+  <mat-card-title> {{exercise.name}} </mat-card-title>
+  <mat-card-subtitle> {{exercise.description}} </mat-card-subtitle>
+  <mat-card-content>
+    <div class="videoWrapper">
+      <iframe width="420" height="315" [src]="exercise.youtubeURL | youtube" allowfullscreen="true">
+        <!--src="{{exercise.youtubeURL | youtube}}" werkt niet, waarom?-->
+      </iframe>
+    </div>
+    <mat-card-subtitle>Main muscle<span *ngIf="exercise.exerciseMuscles.length>1">s</span> used:</mat-card-subtitle>
+    <div *ngFor="let em of exercise.exerciseMuscles">        
+      <p>{{em.name}}</p>
+    </div>
+  </mat-card-content>
+</mat-card>

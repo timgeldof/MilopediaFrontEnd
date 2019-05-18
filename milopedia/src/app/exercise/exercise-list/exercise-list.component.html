@@ -19,7 +19,8 @@
           <!--src="{{exercise.youtubeURL | youtube}}" werkt niet, waarom?-->
         </iframe>
       </div>
-
+      <a mat-list-item [routerLink]="['../',exercise.id]" >View details</a>
+      
     </mat-card-content>
   </mat-card>
 </div>

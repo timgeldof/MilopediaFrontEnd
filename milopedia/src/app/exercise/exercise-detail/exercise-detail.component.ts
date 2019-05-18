@@ -16,6 +16,7 @@ export class ExerciseDetailComponent implements OnInit {
     this.route.data.subscribe(
       item => this.exercise = item['exercise']
     )
+    console.log(this.exercise);
   }
 
 }

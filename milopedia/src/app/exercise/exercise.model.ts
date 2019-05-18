@@ -19,7 +19,7 @@ export class Exercise {
     static fromJSON(json: any): Exercise {
         let musclesFromJson = new Array<Muscle>();
         for(let i in json.exerciseMuscles){
-            musclesFromJson.push(new Muscle(json.exerciseMuscles[i].muscle.id, json.exerciseMuscles[i].name, json.exerciseMuscles[i].muscleType))
+            musclesFromJson.push(new Muscle(json.exerciseMuscles[i].muscle.id, json.exerciseMuscles[i].muscle.name, json.exerciseMuscles[i].muscle.muscleType))
         }        
         const rec = new Exercise(json.id, json.name, json.difficulty, json.youtubeURL, json.description || "No description", musclesFromJson);
         return rec;
