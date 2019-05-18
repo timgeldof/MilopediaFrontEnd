@@ -4,14 +4,34 @@
 
 .sidenav {
   width: 200px;
+  background-color: #a7adba;
+}
+.links a{
+  color:white;
+  font-weight: bolder;
+  text-shadow: 1px 1px 10px #0B2F5A;
+
 }
 
-.sidenav .mat-toolbar {
-  background: inherit;
+.title{
+  background-color:  #4f5b66;
+  color: #c0c5ce;
 }
-
+.mat-drawer-side{
+  border: none;
+}
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
   z-index: 1;
+  background-color: #343d46;
+}
+.toolbar-user{
+  width: 100%;
+  display:flex;
+  font-size: 0.5em;
+  flex-direction: row-reverse;
+}
+.toolbar-user * {
+  margin-left: 2%;
 }

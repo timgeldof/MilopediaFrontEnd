@@ -1,14 +1,12 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
-    <mat-toolbar>Milopedia</mat-toolbar>
-    <mat-nav-list>
+    <mat-toolbar class="title">Milopedia</mat-toolbar>
+    <mat-nav-list class="links">
       <a mat-list-item [routerLink]="['exercise/list']">Exercises</a>
       <a mat-list-item [routerLink]="['exercise/add']">Add an exercise</a>
       <a mat-list-item [routerLink]="['exercise/1']">Check an exercise</a>
-      <a mat-list-item [routerLink]="['login']">Login</a>
-
-
+      <hr>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -16,17 +14,19 @@
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">Milopedia</mat-icon>
       </button>
-      <span *ngIf="(loggedInUser$ | async) as user; else loggedOut"> {{ user }}
-        <button (click)="logout()" mat-flat-button> logout </button>
-      </span>
-      <ng-template #loggedOut>
-        <div>
-          <button (click)="login()" mat-flat-button> login </button>                  
-        </div>
-        <div>
-          <button (click)="register()" mat-flat-button> register </button>                  
-        </div>
-      </ng-template>
+      <div class="toolbar-user">
+        <span *ngIf="(loggedInUser$ | async) as user; else loggedOut"> 
+        {{ user }} <button (click)="logout()" mat-flat-button> logout </button>
+        </span>
+        <ng-template #loggedOut>
+          <div>
+            <button (click)="login()" mat-flat-button> login </button>
+          </div>
+          <div>
+            <button (click)="register()" mat-flat-button> register </button>
+          </div>
+        </ng-template>
+      </div>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>

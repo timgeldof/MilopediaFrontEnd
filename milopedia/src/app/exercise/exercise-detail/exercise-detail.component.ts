@@ -9,6 +9,7 @@ import { Exercise } from '../exercise.model';
   styleUrls: ['./exercise-detail.component.css']
 })
 export class ExerciseDetailComponent implements OnInit {
+  public difficultyStars: string;
   public exercise: Exercise;
   constructor(private route: ActivatedRoute) { }
 
@@ -16,7 +17,20 @@ export class ExerciseDetailComponent implements OnInit {
     this.route.data.subscribe(
       item => this.exercise = item['exercise']
     )
-    console.log(this.exercise);
+    this.difficultyStars = this.makeStars(this.exercise.difficulty);
   }
+  makeStars(difficulty: number) {
+    let diff = "";
+    for (let i = 0; i < difficulty; i++) {
+      diff += "★";
+    }
+    // ☆
+    for (let i = 5 - difficulty ; i > 0; i--) {
+      diff += "☆";
+    }
+    return diff;
+  }
+
+
 
 }
