@@ -19,6 +19,7 @@ export class ExerciseDetailComponent implements OnInit {
     )
     this.difficultyStars = this.makeStars(this.exercise.difficulty);
   }
+
   makeStars(difficulty: number) {
     let diff = "";
     for (let i = 0; i < difficulty; i++) {

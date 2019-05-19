@@ -1,0 +1,51 @@
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+    height: 0;
+}
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+@media screen and (max-width: 601px) {
+    .youtubeVid {
+        width: 100%;
+    }
+    .extraInfo{
+        width: 100%;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .youtubeVid {
+        width: 70%;
+    }
+    .extraInfo{
+        width: 70%;
+    }
+}
+@media screen and (min-width: 1600px) {
+    .youtubeVid {
+        width: 50%;
+    }
+    .extraInfo{
+        width: 50%;
+    }
+}
+.youtubeVid{
+    margin: 0 auto;
+}
+mat-card{
+    background-color: lightgray;
+}
+.mainMuscle{
+    font-weight: bolder;
+    color: #343d46;
+}
+.extraInfo{
+    margin: 0 auto;
+    background-color: whitesmoke;
+}

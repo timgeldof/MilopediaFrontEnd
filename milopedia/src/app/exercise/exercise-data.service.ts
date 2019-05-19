@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http'
 import { Observable, Subject, of } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { map, catchError } from 'rxjs/operators';
+import { Athlete } from 'src/app/exercise/athlete.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,22 @@ export class ExerciseDataService {
       .pipe(          
         map((record: any): Exercise => Exercise.fromJSON(record))
         );
+  }
+  getExerciseOfAthlete$(email): Observable<Athlete>{
+    return this.http.get(`${environment.apiURL}/athlete/${email}`)
+      .pipe(          
+        map((record: any): Athlete => Athlete.fromJSON(record))
+        );
+  }
+  addExerciseToAthlete$(exerciseId): Observable<Object>{
+    let email: string = localStorage.getItem("email");
+    email = email.replace("@","%40");
+    return this.http.post(`${environment.apiURL}/athlete/exercise/${email}?exerciseId=${exerciseId}`, {});
+  }
+  removeExerciseFromAthlete$(exerciseId): Observable<Object>{
+    let email: string = localStorage.getItem("email");
+    email = email.replace("@","%40");
+    return this.http.delete(`${environment.apiURL}/athlete/exercise/${email}?exerciseId=${exerciseId}`, {});
   }
   addNewExercise(exercise: Exercise) {
     console.log(this);

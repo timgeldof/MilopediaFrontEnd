@@ -18,14 +18,13 @@ import { httpInterceptorProviders } from './interceptors/index';
   declarations: [
     AppComponent,
     MainNavComponent,
-    PageNotFoundComponent, 
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     UserModule,
-    //ExerciseModule,
     ReactiveFormsModule,
     LayoutModule,    
     AppRoutingModule,

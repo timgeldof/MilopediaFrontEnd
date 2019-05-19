@@ -1,0 +1,26 @@
+<div *ngIf="(_fetchAthlete$ | async) as currentAthlete; else loading">
+  <p>Hi there {{currentAthlete.firstName}}!</p>
+  <p>You saved {{currentAthlete.exercises.length}} exercises</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Difficulty</th>
+        <th scope="col"></th>
+        <th scope="col"></th>        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let exercise of currentAthlete.exercises">
+        <th scope="row">{{exercise.name}}</th>
+        <td>{{exercise.difficulty | difficultyStars}}</td>
+        <td><a mat-list-item [routerLink]="['../', exercise.id]"><button class="btn btn-success">Details</button></a></td>
+        <td><button (click)="removeFromMyExercises(exercise.id)" class="btn btn-danger">X</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<ng-template>
+  <mat-spinner class="loading"></mat-spinner>
+</ng-template>

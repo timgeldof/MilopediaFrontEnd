@@ -35,7 +35,8 @@
         </div>
       </div>
       <button type="button" mat-raised-button color="primary" [disabled]="exercise.get('exerciseMuscles')['controls'].length>4" (click)="addMuscle()">Add Muscle</button>
-      <button type="submit" mat-raised-button [disabled]="!exercise.valid">Add</button>
+      <br>
+      <button type="submit" mat-raised-button [disabled]="!exercise.valid" style="margin-top:3%;">Add</button>
     </form>
   </mat-card-content>
 </mat-card>

@@ -4,6 +4,7 @@ import { ExerciseDataService } from '../exercise-data.service';
 import { Subject, Observable } from 'rxjs';
 import { Muscle } from '../../muscle.model';
 import { debounceTime } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-exercise-list',
@@ -19,7 +20,7 @@ export class ExerciseListComponent implements OnInit {
   public filterExercise$ = new Subject<string>();
 
   constructor(private _exerciseDataService: ExerciseDataService) {
-
+    this.filterExercise$.subscribe(val => (this.filterExerciseName = val));
   }
 
   ngOnInit() {
@@ -28,6 +29,11 @@ export class ExerciseListComponent implements OnInit {
   get exercises(): Observable<Exercise[]> {
     return this._fetchExercises$;
   }
+
+  addToMyExercises(id: number) {
+    this._exerciseDataService.addExerciseToAthlete$(id).subscribe();
+  }
+
 
   applyFilter(filter: string) {
     this.filterExerciseName = filter;

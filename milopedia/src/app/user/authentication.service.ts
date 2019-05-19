@@ -57,6 +57,7 @@ export class AuthenticationService {
         map((token: any) => {
           if (token) {
             localStorage.setItem(this._tokenKey, token);
+            localStorage.setItem("email", email)
             this._user$.next(email);
             return true;
           } else {
@@ -69,6 +70,7 @@ export class AuthenticationService {
   logout() {
     if (this.user$.getValue()) {
       localStorage.removeItem(this._tokenKey);
+      localStorage.removeItem("email");
       this._user$.next(null);
     }
   }

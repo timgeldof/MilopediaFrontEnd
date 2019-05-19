@@ -11,10 +11,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ExerciseDetailComponent } from './exercise-detail/exercise-detail.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ExerciseResolver } from './exercise-resolver';
-
+import { AthleteExercisesComponent } from './athlete-exercises/athlete-exercises.component';
+import { DifficultyStarsPipe } from '../pipes/difficulty-stars.pipe'
 const routes : Routes = [
   { path: 'list', component: ExerciseListComponent},
   { path: 'add', component: AddExerciseComponent},
+  { path: 'athlete', component: AthleteExercisesComponent},  
   { path: ':id', component: ExerciseDetailComponent, resolve:{exercise: ExerciseResolver}},
 ]
 
@@ -23,9 +25,11 @@ const routes : Routes = [
     ExerciseListComponent,
     YoutubePipe,
     ExerciseFilterPipe,
+    DifficultyStarsPipe,
     AddExerciseComponent,
     MuscleComponent,
-    ExerciseDetailComponent
+    ExerciseDetailComponent,
+    AthleteExercisesComponent
   ],
   imports: [
     CommonModule,

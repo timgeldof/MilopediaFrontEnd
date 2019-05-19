@@ -5,7 +5,7 @@
     <mat-nav-list class="links">
       <a mat-list-item [routerLink]="['exercise/list']">Exercises</a>
       <a mat-list-item [routerLink]="['exercise/add']">Add an exercise</a>
-      <a mat-list-item [routerLink]="['exercise/1']">Check an exercise</a>
+      <a mat-list-item *ngIf="(loggedInUser$ | async) as user" [routerLink]="['exercise/athlete']">My Exercises</a>
       <hr>
     </mat-nav-list>
   </mat-sidenav>
