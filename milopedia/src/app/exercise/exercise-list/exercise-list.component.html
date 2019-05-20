@@ -13,7 +13,7 @@
   <div *ngFor="let exercise of (exercises | async | exerciseFilter : filterExerciseName)">
     <mat-card class="exerciseInList">
       <mat-card-title> {{exercise.name}} </mat-card-title>
-      <mat-card-subtitle> {{exercise.description}} </mat-card-subtitle>
+      <mat-card-subtitle> {{exercise.description | shortDescription}} </mat-card-subtitle>
       <mat-card-content>
         <hr>
         <a mat-list-item [routerLink]="['../',exercise.id]"><button class="btn btn-info pull-right" >View details</button></a>

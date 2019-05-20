@@ -13,6 +13,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { ExerciseResolver } from './exercise-resolver';
 import { AthleteExercisesComponent } from './athlete-exercises/athlete-exercises.component';
 import { DifficultyStarsPipe } from '../pipes/difficulty-stars.pipe'
+import { ShortDescriptionPipe } from '../pipes/short-description.pipe';
+
 const routes : Routes = [
   { path: 'list', component: ExerciseListComponent},
   { path: 'add', component: AddExerciseComponent},
@@ -25,6 +27,7 @@ const routes : Routes = [
     ExerciseListComponent,
     YoutubePipe,
     ExerciseFilterPipe,
+    ShortDescriptionPipe,
     DifficultyStarsPipe,
     AddExerciseComponent,
     MuscleComponent,

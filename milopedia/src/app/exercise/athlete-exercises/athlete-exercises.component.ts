@@ -23,7 +23,9 @@ export class AthleteExercisesComponent implements OnInit {
   }
 
   removeFromMyExercises(id: number){
-    this._exerciseDataService.removeExerciseFromAthlete$(id).subscribe(val => this._router.navigateByUrl("exercise/list"));
+    this._exerciseDataService.removeExerciseFromAthlete$(id).subscribe( () => {
+      return this._router.navigateByUrl("exercise/list");
+    });
   }
   
 }
