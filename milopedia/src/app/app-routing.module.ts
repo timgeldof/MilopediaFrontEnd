@@ -8,7 +8,6 @@ import { AuthGuard } from 'src/app/user/auth.guard';
 
 const appRoutes : Routes = [
   { path: 'exercise',
-    canActivate: [AuthGuard], 
     loadChildren:'src/app/exercise/exercise.module#ExerciseModule',
     data: {preload: true }
   },

@@ -14,12 +14,13 @@ import { ExerciseResolver } from './exercise-resolver';
 import { AthleteExercisesComponent } from './athlete-exercises/athlete-exercises.component';
 import { DifficultyStarsPipe } from '../pipes/difficulty-stars.pipe'
 import { ShortDescriptionPipe } from '../pipes/short-description.pipe';
+import { AuthGuard } from 'src/app/user/auth.guard';
 
 const routes : Routes = [
   { path: 'list', component: ExerciseListComponent},
-  { path: 'add', component: AddExerciseComponent},
-  { path: 'athlete', component: AthleteExercisesComponent},  
-  { path: ':id', component: ExerciseDetailComponent, resolve:{exercise: ExerciseResolver}},
+  { path: 'add', canActivate: [AuthGuard], component: AddExerciseComponent},
+  { path: 'athlete', canActivate: [AuthGuard],component: AthleteExercisesComponent},  
+  { path: ':id',component: ExerciseDetailComponent, resolve:{exercise: ExerciseResolver}},
 ]
 
 @NgModule({
@@ -32,7 +33,7 @@ const routes : Routes = [
     AddExerciseComponent,
     MuscleComponent,
     ExerciseDetailComponent,
-    AthleteExercisesComponent
+    AthleteExercisesComponent,
   ],
   imports: [
     CommonModule,

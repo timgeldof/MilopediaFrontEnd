@@ -11,7 +11,7 @@
 </mat-card>
 <div class="exerciseList">
   <div *ngFor="let exercise of (exercises | async | exerciseFilter : filterExerciseName)">
-    <mat-card class="exerciseInList">
+    <mat-card class="exerciseInList" data-cy="exercise" >
       <mat-card-title> {{exercise.name}} </mat-card-title>
       <mat-card-subtitle> {{exercise.description | shortDescription}} </mat-card-subtitle>
       <mat-card-content>

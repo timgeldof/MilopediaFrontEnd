@@ -4,8 +4,8 @@
     <mat-toolbar class="title">Milopedia</mat-toolbar>
     <mat-nav-list class="links">
       <a mat-list-item [routerLink]="['exercise/list']">Exercises</a>
-      <a mat-list-item [routerLink]="['exercise/add']">Add an exercise</a>
-      <a mat-list-item *ngIf="(loggedInUser$ | async) as user" [routerLink]="['exercise/athlete']">My Exercises</a>
+      <a data-cy="add" mat-list-item *ngIf="(loggedInUser$ | async) as user" [routerLink]="['exercise/add']">Add an exercise</a>
+      <a data-cy="myEx" mat-list-item *ngIf="(loggedInUser$ | async) as user" [routerLink]="['exercise/athlete']">My Exercises</a>
       <hr>
     </mat-nav-list>
   </mat-sidenav>
