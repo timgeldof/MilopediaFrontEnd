@@ -19,6 +19,8 @@
         <a mat-list-item [routerLink]="['../',exercise.id]"><button class="btn btn-info pull-right" >View details</button></a>
         <hr>
         <button class="btn btn-secondary pull-right" (click)="addToMyExercises(exercise.id)">Add to my exercises</button>
+        <hr>        
+        <button class="btn btn-danger pull-right" (click)="removeExercise(exercise.id);">Remove</button>        
       </mat-card-content>
     </mat-card>
   </div>

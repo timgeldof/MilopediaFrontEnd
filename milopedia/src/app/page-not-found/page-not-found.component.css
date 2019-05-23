@@ -1,0 +1,15 @@
+body{
+    text-align: center;
+}
+h1{
+    color:red;
+    background-color: white;
+    padding-bottom: 10px;
+}
+.lost{
+    background-image: url("http://i.imgur.com/SyBXY.jpg");    
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:center;
+    min-height: 100vh;    
+}

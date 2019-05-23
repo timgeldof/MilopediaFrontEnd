@@ -4,7 +4,7 @@
     <form [formGroup]="exercise" (ngSubmit)="onSubmit()">
       <mat-form-field>
         <!--aria label is gwn voor screen reader gebruikers -->
-        <input matInput aria-label="name input" placeholder="name" type="text" formControlName="name" required />
+        <input matInput aria-label="name input" placeholder="Exercise Name" type="text" formControlName="name" required />
         <mat-error *ngIf="exercise.get('name')['errors'] && exercise.get('name').touched">
           {{getErrorMessage(exercise.get('name')['errors'])}}
         </mat-error>
@@ -20,8 +20,16 @@
       <mat-form-field>
         <!--aria label is gwn voor screen reader gebruikers -->
         <input matInput aria-label="youtube url" placeholder="Youtube URL" type="text" formControlName="youtubeURL" required />
+        <mat-error *ngIf="exercise.get('youtubeURL')['errors'] && exercise.get('youtubeURL').touched">
+            {{getErrorMessage(exercise.get('youtubeURL')['errors'])}}
+          </mat-error>
       </mat-form-field>
-
+      <mat-form-field>
+          <input matInput aria-label="description" placeholder="description" type="text" formControlName="description" required />
+          <mat-error *ngIf="exercise.get('description')['errors'] && exercise.get('description').touched">
+              {{getErrorMessage(exercise.get('description')['errors'])}}
+            </mat-error>
+        </mat-form-field>
       <div formArrayName="exerciseMuscles" *ngFor="let m of exercise.get('exerciseMuscles')['controls']; let i = index">
         <div [formGroupName]="i">
           <mat-form-field>
@@ -41,5 +49,4 @@
   </mat-card-content>
 </mat-card>
 
-{{exercise.value | json}}
-<hr>
+

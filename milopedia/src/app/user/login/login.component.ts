@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
     });
   }
   onSubmit() {
-    console.log('on submt');
     this.authService
       .login(this.user.value.username, this.user.value.password)
       .subscribe(
@@ -59,13 +58,13 @@ export class LoginComponent implements OnInit {
       (err: HttpErrorResponse) => {
         console.log(err);
         if (err.error instanceof Error) {
-          this.errorMsg = `Error while trying to login user ${
+          this.errorMsg = `Login failed for ${
             this.user.value.username
-            }: ${err.error.message}`;
+            }`;
         } else {
-          this.errorMsg = `Error ${err.status} while trying to login user ${
+          this.errorMsg = `Login failed for ${
             this.user.value.username
-            }: ${err.error}`;
+            }`;
         }
       }
       );

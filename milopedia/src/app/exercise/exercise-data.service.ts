@@ -49,6 +49,9 @@ export class ExerciseDataService {
     email = email.replace("@","%40");
     return this.http.delete(`${environment.apiURL}/athlete/exercise/${email}?exerciseId=${exerciseId}`, {});
   }
+  removeExercise(exerciseId): Observable<Object>{
+    return this.http.delete(`${environment.apiURL}/exercise/${exerciseId}`, {});
+  }
   addNewExercise(exercise: Exercise) {
     console.log(this);
     return this.http.post(`${environment.apiURL}/exercise/`, exercise.toJSON());

@@ -33,6 +33,10 @@ export class ExerciseListComponent implements OnInit {
   addToMyExercises(id: number) {
     this._exerciseDataService.addExerciseToAthlete$(id).subscribe();
   }
+  removeExercise(id:number){
+    this._exerciseDataService.removeExercise(id).subscribe();
+    window.location.reload();
+  }
 
 
   applyFilter(filter: string) {
