@@ -1,6 +1,8 @@
 <div *ngIf="(_fetchAthlete$ | async) as currentAthlete; else loading">
   <p>Hi there {{currentAthlete.firstName}}!</p>
-  <p>You saved {{currentAthlete.exercises.length}} exercises</p>
+  <div *ngIf="(exercises$ | async) as exercises">
+    <p>You saved {{exercises.length}} exercises</p>
+  </div>
   <table class="table">
     <thead>
       <tr>
@@ -11,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let exercise of currentAthlete.exercises">
+      <tr *ngFor="let exercise of (exercises$ | async)">
         <th scope="row">{{exercise.name}}</th>
         <td>{{exercise.difficulty | difficultyStars}}</td>
         <td><a mat-list-item [routerLink]="['../', exercise.id]"><button class="btn btn-success">Details</button></a></td>

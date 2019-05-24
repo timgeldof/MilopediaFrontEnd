@@ -33,11 +33,23 @@ export class ExerciseDataService {
         map((record: any): Exercise => Exercise.fromJSON(record))
         );
   }
-  getExerciseOfAthlete$(email): Observable<Athlete>{
+  getAthlete$(email): Observable<Athlete>{
     return this.http.get(`${environment.apiURL}/athlete/${email}`)
       .pipe(          
         map((record: any): Athlete => Athlete.fromJSON(record))
         );
+  }
+  getExercisesOfAthlete(email): Observable<Exercise[]>{
+    return this.http.get(`${environment.apiURL}/athleteexercise/${email}`)
+    .pipe(
+      catchError(e => {
+        this.loadingError$.next(e.statusText);
+        return of(null);
+      }),
+      map(
+        (list: any[]): Exercise[] => list.map(Exercise.fromJSON)
+      )
+    )
   }
   addExerciseToAthlete$(exerciseId): Observable<Object>{
     let email: string = localStorage.getItem("email");

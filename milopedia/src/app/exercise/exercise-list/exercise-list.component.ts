@@ -34,10 +34,10 @@ export class ExerciseListComponent implements OnInit {
     this._exerciseDataService.addExerciseToAthlete$(id).subscribe();
   }
   removeExercise(id:number){
-    this._exerciseDataService.removeExercise(id).subscribe();
-    window.location.reload();
+    this._exerciseDataService.removeExercise(id).subscribe(
+      () => {this._fetchExercises$ = this._exerciseDataService.exercises$;}
+    );
   }
-
 
   applyFilter(filter: string) {
     this.filterExerciseName = filter;
